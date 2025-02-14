@@ -1,0 +1,48 @@
+@layer exercise, startup;
+
+@import url(main.css) layer(excercise);
+
+@layer startup {
+    html {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+        margin: 0 .5em;
+        background: black;
+    }
+    
+    h2 {
+        text-align: center;
+        color: whitesmoke;
+    }
+    .body__header, .body__footer {
+        background-color: gray;
+        color: whitesmoke;
+        padding: 2rem 2rem;
+        margin: 0 -.5em;
+        text-align: center;
+    }
+    .top-places__item {
+        position: relative;
+        margin: 0;
+    }
+    .top-places__item figcaption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        padding: 1em;
+    }
+    .other-gallery__item {
+        margin: 0;
+    } 
+    .img-rsp {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
