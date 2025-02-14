@@ -9,26 +9,114 @@
 /* other gallery má náhledy velké maximálně 320px nebo menší (implicit layout) */
 /* počet sloupců určen automaticky (auto-fit) */
 
+.top-places{
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    grid-auto-flow: dense;
+}
+
+.other-gallery{
+    display: grid;
+    gap: 0.5em;
+    justify-content: center;
+    align-items: end;
+    grid-template-columns: repeat(auto-fit, 320px);
+}
+
+.top-places__item--map {
+    grid-row-end: span 2;
+    grid-column-end: span 2;
+}
+
+.top-places__item--2v {
+    grid-row-end: span 2;
+}
+
+.top-places__item--2h {
+    grid-column-end: span 2;
+}
+
 /* změny designu pro šíři >= 832px */
 @media (min-width: 832px) {
-    /* galerie TOP places – sloupec s body__main má pevný rozměr 800px */
-    /* obrázek s mapou je vždy uprostřed (explicit layout 2×2) */
-    /* obrázek s hradem je vždy zcela vpravo dole (explicit layout 1×2) */
-    /* obrázek s pobřežím je vždy zcela vlevo nahoře (explicit layout 1×2) */
 
+    .body {
+        display: grid;
+        gap: 0.5em;
+        grid-template-columns: 1fr 800px 1fr;
+        grid-template-areas:
+        'head head head'
+        '. place .'
+        'gallery gallery gallery'
+        'foot foot foot';
+    }
+
+    .body__header {
+        grid-area: head;
+    }
+    .body__main{
+        grid-area: place;  
+    }
+    .body__other{
+        grid-area: gallery;
+    }
+    .body__footer {
+        grid-area: foot;
+    }
+
+    .top-places {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .top-places__item--map {
+        grid-column-start: 2;
+        grid-row-start: 2;
+    }
+    .top-places__item--coast {
+        grid-column-start: 1;
+        grid-row-start: 1;
+    }
+    .top-places__item--castle {
+        grid-column-start: 3;
+        grid-row-start: 4;
+    }
 }
 
 /* změny designu pro šíři >= 1150px */
 @media (min-width: 1150px) {
-    /* galerie TOP places – sloupec s body__main má pevný rozměr 800px */
-    /* Other gallery - sloupec s body__other zabírá zbytek prostoru vlevo od body__main */
+    .body {
+        display: grid;
+        grid-template-columns: 1fr 800px;
+        grid-template-areas: 
+        'head head'
+        'gallery place'
+        'foot foot';
+    }
 
+    .other-gallery{
+        grid-area: gallery;
+        justify-self: start;
+    }
+
+    .top-places{
+        grid-area: places;
+    }
 }
 
 /* změny designu pro šíři >= 1280px */
 @media (min-width: 1280px) {
-    /* Other gallery - sloupec s body__other zabírá prostor vlevo od body__main, maximálně však 600px! */
+    .body {
+        display: grid;
+        grid-template-columns: 1fr minmax(auto, 600px) 800px 1fr;
+        grid-template-areas: 
+        'head head head head'
+        '. gallery place .'
+        'foot foot foot foot';
+    }
 
-    /* obrázky v other-gallery jsou vždy umístěny ve dvou sloupcích */
-
+    .other-gallery{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: start;
+    }
 }
