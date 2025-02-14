@@ -1,14 +1,3 @@
-/* definice grid area ==> použijete pro základní layout .body__**** elementů */
-
-/* základní rozvržení (mobil) - do 831px jeden sloupec */
-/* veškerý gap je vždy stejný, jako vnější (levý a pravý) okraj celého viewportu */
-
-/* galerie TOP places tvořena dvěma sloupci */
-/* rozložení prvků metodou explicit layout *relativní* (span 2) */
-
-/* other gallery má náhledy velké maximálně 320px nebo menší (implicit layout) */
-/* počet sloupců určen automaticky (auto-fit) */
-
 .top-places{
     display: grid;
     gap: 0.5em;
@@ -94,19 +83,13 @@
     }
 
     .other-gallery{
-        grid-area: gallery;
         justify-self: start;
-    }
-
-    .top-places{
-        grid-area: places;
     }
 }
 
 /* změny designu pro šíři >= 1280px */
 @media (min-width: 1280px) {
     .body {
-        display: grid;
         grid-template-columns: 1fr minmax(auto, 600px) 800px 1fr;
         grid-template-areas: 
         'head head head head'
